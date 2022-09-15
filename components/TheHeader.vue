@@ -16,8 +16,17 @@
               class="nav-link scrollto"
               :class="curHash === item.id ? 'active' : ''"
               @click="navTo(item)"
-              >{{ item.name }}</a
+              >{{ $t(item.name) }}</a
             >
+          </li>
+          <li>
+            <button
+              type="button"
+              class="button"
+              @click="changeLocale(locale, $i18n)"
+            >
+              {{ locale }}
+            </button>
           </li>
         </ul>
         <i
@@ -29,14 +38,23 @@
       <!-- .navbar -->
     </div>
   </header>
+  <a
+    href="#"
+    :class="scrollY > 100 ? 'active' : ''"
+    class="back-to-top d-flex align-items-center justify-content-center"
+    ><i class="bi bi-arrow-up-short"></i
+  ></a>
 </template>
 
 <script lang="ts" setup>
+import { useLocaleStore } from "../store/locale";
+const useLocale = useLocaleStore();
+const locale = ref(useLocale.locale);
 const visible = ref(false);
 const toggleNav = () => {
   visible.value = !visible.value;
 };
-const scrollY = computed(() => globalThis.scrollY);
+const scrollY = ref(globalThis.scrollY);
 const curHash = ref("hero");
 const MenuList = [
   { name: "Home", id: "hero" },
@@ -46,8 +64,45 @@ const MenuList = [
   { name: "Blog", id: "blog" },
   { name: "Contact", id: "contact" },
 ];
+
 const navTo = (item) => {
-  console.log(item);
+  curHash.value = item.id;
+  const offset = document.getElementById("header")?.offsetHeight - 16;
+  let elementPos = document.getElementById(item.id).offsetTop;
+  globalThis.scrollTo({
+    top: elementPos - offset,
+    behavior: "smooth",
+  });
+};
+onMounted(() => {
+  globalThis.addEventListener("scroll", getScroll, true);
+});
+const getScroll = () => {
+  scrollY.value = globalThis.scrollY;
+  let position = scrollY.value + 200;
+  MenuList.map((item) => {
+    let section = document.getElementById(item.id);
+    if (
+      position >= section.offsetTop &&
+      position <= section.offsetTop + section.offsetHeight
+    ) {
+      curHash.value = item.id;
+    }
+  });
+};
+
+onUnmounted(() => {
+  globalThis.removeEventListener("scroll", getScroll, true);
+});
+
+const changeLocale = (lang: string, i18n) => {
+  if (lang === "en") {
+    useLocale.changeLocale("cn");
+  } else {
+    useLocale.changeLocale("en");
+  }
+  locale.value = useLocale.locale;
+  i18n.locale = useLocale.locale;
 };
 </script>
 

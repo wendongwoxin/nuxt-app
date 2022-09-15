@@ -20,8 +20,10 @@
                   <div class="col-sm-6 col-md-7">
                     <div class="about-info">
                       <p v-for="item in personalList" :key="item.label">
-                        <span class="title-s">{{ item.label }}: </span>
-                        <span>{{ item.value }}</span>
+                        <span class="title-s"
+                          >{{ $t(`personal.${item.label}`) }}:
+                        </span>
+                        <span>{{ $t(item.value) }}</span>
                       </p>
                     </div>
                   </div>
@@ -47,7 +49,7 @@
               <div class="col-md-6">
                 <div class="about-me pt-4 pt-md-0">
                   <div class="title-box-2">
-                    <h5 class="title-left">About me</h5>
+                    <h5 class="title-left">{{ $t("aboutMe") }}</h5>
                   </div>
                   <p class="lead">
                     Jinwen Wu, graduated from Hefei University of Technology
@@ -68,7 +70,7 @@
                   </p>
                   <li
                     class="lead"
-                    v-for="(item, index) in SkillDetails"
+                    v-for="(item, index) in $t('skills')"
                     :key="index"
                   >
                     {{ item }}
@@ -131,12 +133,6 @@ const skills = [
   },
 ];
 
-const SkillDetails = [
-  "Have the design and development capabilities of general components, complete the development of more than n components.",
-  "Able to develop independently or collaboratively, with open source experience and leading experience",
-  "Have experience in business system architecture design and R&D, and have completed more than n system business architecture design and development",
-  "Have a strong ability to find and solve problems, have done a lot of research needs, and have the enthusiasm and impulse to learn new technologies",
-];
 </script>
 
 <style scoped lang="scss"></style>

@@ -8,6 +8,7 @@
     <div class="hero-content display-table">
       <div class="table-cell">
         <div class="container">
+          <h1 class="hero-title mb-4">{{ $t("hello", { name: "vue-i18n" }) }}</h1>
           <h1 class="hero-title mb-4">I am Jinwen Wu,</h1>
           <p class="hero-subtitle">
             <span class="typed"></span>

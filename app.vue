@@ -1,9 +1,10 @@
 <template>
-  <TheHeader></TheHeader>
   <client-only>
+    <TheHeader></TheHeader>
     <Hero></Hero>
   </client-only>
   <NuxtPage />
+  <TheFooter></TheFooter>
 </template>
 
 <style type="scss">

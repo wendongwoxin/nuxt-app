@@ -1,0 +1,25 @@
+{
+    "hello": "你好， {name} ！",
+    "language": "语言",
+    "Home": "主 页",
+    "About": "关 于",
+    "aboutMe": "关于我",
+    "Services": "服 务",
+    "Work": "工 作",
+    "Blog": "博 客",
+    "Contact": "联系我",
+    "personal": {
+        "Name": "姓名",
+        "Profile": "工作",
+        "Email": "邮箱",
+        "WeChat": "微信"
+    },
+    "Jinwen Wu": "吴晋文",
+    "Front-end Developer": "前端开发工程师",
+    "skills": [
+        "Have the design and development capabilities of general components, complete the development of more than n components.",
+        "Able to develop independently or collaboratively, with open source experience and leading experience",
+        "Have experience in business system architecture design and R&D, and have completed more than n system business architecture design and development",
+        "Have a strong ability to find and solve problems, have done a lot of research needs, and have the enthusiasm and impulse to learn new technologies"
+    ]
+}
